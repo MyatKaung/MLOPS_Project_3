@@ -16,3 +16,4 @@ plugins
 Project3/Project3.egg-info
 include/
 .astro
+condavenv
