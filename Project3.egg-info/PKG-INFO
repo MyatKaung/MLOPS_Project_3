@@ -1,4 +1,4 @@
-Metadata-Version: 2.4
+Metadata-Version: 2.2
 Name: Project3
 Version: 0.1
 Author: MyatKaung
@@ -9,5 +9,9 @@ Requires-Dist: psycopg2
 Requires-Dist: scikit-learn
 Requires-Dist: imbalanced-learn
 Requires-Dist: redis
+Requires-Dist: flask
+Requires-Dist: alibi-detect
+Requires-Dist: python-dotenv
+Requires-Dist: prometheus_client
 Dynamic: author
 Dynamic: requires-dist

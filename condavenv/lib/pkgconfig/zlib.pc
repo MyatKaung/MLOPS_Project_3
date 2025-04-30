@@ -1,0 +1,13 @@
+prefix=/Users/myatkaung/Desktop/MLOPS_PROJECTS/Project3/condavenv
+exec_prefix=/Users/myatkaung/Desktop/MLOPS_PROJECTS/Project3/condavenv
+libdir=/Users/myatkaung/Desktop/MLOPS_PROJECTS/Project3/condavenv/lib
+sharedlibdir=/Users/myatkaung/Desktop/MLOPS_PROJECTS/Project3/condavenv/lib
+includedir=/Users/myatkaung/Desktop/MLOPS_PROJECTS/Project3/condavenv/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

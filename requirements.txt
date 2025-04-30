@@ -5,3 +5,7 @@ psycopg2
 scikit-learn
 imbalanced-learn
 redis 
+flask
+alibi-detect
+python-dotenv
+prometheus_client
