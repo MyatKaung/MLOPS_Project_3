@@ -122,14 +122,4 @@ Start with the `database_setup/` and `etl_pipeline/` folders, and follow the num
 
 ---
 
-## 🙌 Acknowledgements
 
-Special thanks to the open-source tools and contributors of:
-- [Astronomer.io](https://www.astronomer.io/)
-- [Redis](https://redis.io/)
-- [Grafana Labs](https://grafana.com/)
-- [Prometheus](https://prometheus.io/)
-
----
-
-> 🚀 Let’s get started and build production-grade ML workflows with confidence!
