@@ -1,45 +1,135 @@
-Overview
-========
+# 🚢 MLOps Project 3: Titanic Survival Prediction
 
-Welcome to Astronomer! This project was generated after you ran 'astro dev init' using the Astronomer CLI. This readme describes the contents of the project, as well as how to run Apache Airflow on your local machine.
+This project is part of the MLOps Project Series and focuses on implementing **data engineering**, **feature stores**, and **ML monitoring** concepts using a well-known dataset: the Titanic Survival dataset.
 
-Project Contents
-================
+While the machine learning task is familiar, the emphasis of this project is on integrating key MLOps components in a realistic workflow.
 
-Your Astro project contains the following files and folders:
+---
 
-- dags: This folder contains the Python files for your Airflow DAGs. By default, this directory includes one example DAG:
-    - `example_astronauts`: This DAG shows a simple ETL pipeline example that queries the list of astronauts currently in space from the Open Notify API and prints a statement for each astronaut. The DAG uses the TaskFlow API to define tasks in Python, and dynamic task mapping to dynamically print a statement for each astronaut. For more on how this DAG works, see our [Getting started tutorial](https://www.astronomer.io/docs/learn/get-started-with-airflow).
-- Dockerfile: This file contains a versioned Astro Runtime Docker image that provides a differentiated Airflow experience. If you want to execute other commands or overrides at runtime, specify them here.
-- include: This folder contains any additional files that you want to include as part of your project. It is empty by default.
-- packages.txt: Install OS-level packages needed for your project by adding them to this file. It is empty by default.
-- requirements.txt: Install Python packages needed for your project by adding them to this file. It is empty by default.
-- plugins: Add custom or community plugins for your project to this file. It is empty by default.
-- airflow_settings.yaml: Use this local-only file to specify Airflow Connections, Variables, and Pools instead of entering them in the Airflow UI as you develop DAGs in this project.
+![MLOps Project 3 Workflow](mlops-project3.png)
 
-Deploy Your Project Locally
-===========================
+---
 
-Start Airflow on your local machine by running 'astro dev start'.
+## 🎯 Objective
 
-This command will spin up five Docker containers on your machine, each for a different Airflow component:
+To predict passenger survival using the Titanic dataset and to integrate advanced MLOps practices such as:
 
-- Postgres: Airflow's Metadata Database
-- Scheduler: The Airflow component responsible for monitoring and triggering tasks
-- DAG Processor: The Airflow component responsible for parsing DAGs
-- API Server: The Airflow component responsible for serving the Airflow UI and API
-- Triggerer: The Airflow component responsible for triggering deferred tasks
+- ETL pipelines using **Airflow (Astronomer)**
+- Feature Store using **Redis**
+- ML monitoring with **Prometheus** and **Grafana**
+- Data Drift Detection using **EvidentlyAI** or **LeviDetect**
 
-When all five containers are ready the command will open the browser to the Airflow UI at http://localhost:8080/. You should also be able to access your Postgres Database at 'localhost:5432/postgres' with username 'postgres' and password 'postgres'.
+---
 
-Note: If you already have either of the above ports allocated, you can either [stop your existing Docker containers or change the port](https://www.astronomer.io/docs/astro/cli/troubleshoot-locally#ports-are-not-available-for-my-local-airflow-webserver).
+## 🧱 Project Highlights
 
-Deploy Your Project to Astronomer
-=================================
+### ✅ ETL Pipeline with Airflow
+- Build Extract-Transform-Load pipelines using **Astronomer Airflow**
+- Extract Titanic CSV data from GCP buckets (simulated)
+- Transform it into table-compatible formats
+- Load into **PostgreSQL**
 
-If you have an Astronomer account, pushing code to a Deployment on Astronomer is simple. For deploying instructions, refer to Astronomer documentation: https://www.astronomer.io/docs/astro/deploy-code/
+### ✅ Feature Store with Redis
+- Store processed features (X_train, Y_train, etc.)
+- Avoid repeated transformations and improve scalability
+- Use Redis CLI/Docker for feature store setup
 
-Contact
-=======
+### ✅ Data Drift Detection
+- Compare incoming data with training reference data
+- Use **LeviDetect** or **EvidentlyAI** to track and alert on drift
 
-The Astronomer CLI is maintained with love by the Astronomer team. To report a bug or suggest a change, reach out to our support.
+### ✅ ML Monitoring with Prometheus & Grafana
+- Define custom metrics: prediction count, data drift count, mean of age, etc.
+- Visualize them in real-time dashboards using Grafana
+- Automate alerts (e.g., trigger retraining if drift > threshold)
+
+---
+
+## 🔄 Workflow Breakdown
+
+1. **Database Setup**: Simulated cloud storage using GCP buckets and PostgreSQL
+2. **Project Setup**: Virtual env, folder structure, `setup.py`, `requirements.txt`
+3. **ETL Pipeline**: Astronomer Airflow to extract-transform-load data into PostgreSQL
+4. **Data Ingestion**: Read from PostgreSQL, save to CSV, split into train/test
+5. **Jupyter Notebook Testing**: EDA, feature engineering, baseline model
+6. **Feature Store**: Push clean features to Redis; later pull for model training
+7. **Data Processing & Feature Extraction**: Modular pipeline code using `src/`
+8. **Model Training**: Train classifier using features pulled from Redis
+9. **Training Pipeline**: Combine data ingestion, processing, and training into one script
+10. **Versioning**: Use GitHub for both code and small dataset versioning
+11. **User App (Flask)**: Build web app for input/output; stylize with HTML + ChatGPT-generated CSS
+12. **Data Drift Detection**: Compare live inputs with training data
+13. **ML Monitoring**: Use Prometheus to log metrics; Grafana for dashboards
+
+---
+
+## 📁 Dataset
+
+- **Source**: [Kaggle - Titanic Survival Dataset](https://www.kaggle.com/competitions/titanic/data)
+- **Fields**: Name, Age, Pclass, SibSp, Cabin, Embarked, etc.
+- **Target**: `Survived` (0 = No, 1 = Yes)
+
+---
+
+## 🛠️ Tools & Libraries
+
+| Category          | Tools / Libraries              |
+|-------------------|--------------------------------|
+| ML & EDA          | Pandas, Scikit-learn, Matplotlib |
+| ETL               | Apache Airflow (Astronomer)    |
+| Feature Store     | Redis (via Docker)             |
+| Monitoring        | Prometheus, Grafana            |
+| Drift Detection   | LeviDetect / EvidentlyAI       |
+| Web Framework     | Flask + HTML/CSS               |
+| Versioning        | GitHub                         |
+| Database          | PostgreSQL                     |
+
+---
+
+## 💡 Why Titanic Dataset?
+
+This dataset is widely understood and avoids the need to spend time on:
+- Understanding new feature spaces
+- Complex model architecture
+- Unknown preprocessing techniques
+
+This allows full focus on mastering **ETL pipelines**, **Feature Store**, and **Monitoring**, which are **crucial in real-world production systems**.
+
+---
+
+## 📌 Key MVPs (Milestones)
+
+1. **ETL Pipeline with Airflow**
+2. **Redis-based Feature Store**
+3. **Data Drift Detection**
+4. **ML Monitoring with Grafana + Prometheus**
+
+---
+
+## 📍 Next Steps
+
+Start with the `database_setup/` and `etl_pipeline/` folders, and follow the numbered modules.
+
+> ✅ Tip: Revisit MLOps Project 1 & 2 for a refresher on data ingestion and training pipeline basics.
+
+---
+
+## 🧠 Bonus Ideas (Advanced Users)
+
+- Integrate CI/CD using Jenkins or GitHub Actions
+- Deploy trained Docker image to GCP Cloud Run or Kubernetes
+- Extend monitoring with model performance (precision, recall, etc.)
+
+---
+
+## 🙌 Acknowledgements
+
+Special thanks to the open-source tools and contributors of:
+- [Astronomer.io](https://www.astronomer.io/)
+- [Redis](https://redis.io/)
+- [Grafana Labs](https://grafana.com/)
+- [Prometheus](https://prometheus.io/)
+
+---
+
+> 🚀 Let’s get started and build production-grade ML workflows with confidence!
