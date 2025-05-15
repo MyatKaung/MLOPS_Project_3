@@ -6,7 +6,7 @@ While the machine learning task is familiar, the emphasis of this project is on 
 
 ---
 
-![MLOps Project 3 Workflow](mlops-project3.png)
+![MLOps Project 3 Workflow](mlops-project3_revised.png)
 
 ---
 
