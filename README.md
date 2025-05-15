@@ -104,22 +104,5 @@ This allows full focus on mastering **ETL pipelines**, **Feature Store**, and **
 3. **Data Drift Detection**
 4. **ML Monitoring with Grafana + Prometheus**
 
----
-
-## 📍 Next Steps
-
-Start with the `database_setup/` and `etl_pipeline/` folders, and follow the numbered modules.
-
-> ✅ Tip: Revisit MLOps Project 1 & 2 for a refresher on data ingestion and training pipeline basics.
-
----
-
-## 🧠 Bonus Ideas (Advanced Users)
-
-- Integrate CI/CD using Jenkins or GitHub Actions
-- Deploy trained Docker image to GCP Cloud Run or Kubernetes
-- Extend monitoring with model performance (precision, recall, etc.)
-
----
 
 
